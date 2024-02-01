@@ -13,17 +13,17 @@ module.exports = class Cart {
     }
 
     get items() {
-        this.#CheckEmptyCart(this.#items);
+        this.#checkEmptyCart(this.#items);
         return this.#items;
     }
 
     get total() {
-        this.#CheckEmptyCart(this.#items);
+        this.#checkEmptyCart(this.#items);
         return this.#items.reduce((accumulator, item) => accumulator + item.total, 0);
     }
 
     count(distinct = false) {
-        this.#CheckEmptyCart(this.#items);
+        this.#checkEmptyCart(this.#items);
         if (distinct) return this.items.length;
         return this.#items.reduce((accumulator, item) => accumulator + item.quantity, 0);
     }
@@ -36,7 +36,7 @@ module.exports = class Cart {
     //endregion public methods
 
     //region private methods
-    #CheckEmptyCart(value) {
+    #checkEmptyCart(value) {
         if (value === null) throw new EmptyCartException();
     }
 
