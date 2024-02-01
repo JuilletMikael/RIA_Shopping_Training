@@ -18,6 +18,7 @@ module.exports = class Cart {
     }
 
     get total() {
+        this.#CheckEmptyCart(this.#items);
         return this.#items.reduce((accumulator, item) => accumulator + item.total, 0);
     }
 
