@@ -28,6 +28,11 @@ module.exports = class Cart {
         return this.#items.reduce((accumulator, item) => accumulator + item.quantity, 0);
     }
 
+    add(value) {
+        if (this.#items) this.#items.push(...value);
+        else this.#items = value;
+    }
+
     //endregion public methods
 
     //region private methods
