@@ -8,11 +8,11 @@ module.exports = class Cart {
 
     //region public methods
     constructor(items) {
-        throw new Exeption;
+        this.#items = items;
     }
 
     get items() {
-       throw new Exeption;
+        return this.#items;
     }
 
     //endregion public methods
