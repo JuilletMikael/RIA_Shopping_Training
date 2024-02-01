@@ -42,7 +42,7 @@ module.exports = class CartItem {
     }
 
     set price(value) {
-        throw new Error();
+        this.#price = value;
     }
 
     get total() {
