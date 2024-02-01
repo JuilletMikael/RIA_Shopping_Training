@@ -23,6 +23,7 @@ module.exports = class Cart {
     }
 
     count(distinct = false) {
+        this.#CheckEmptyCart(this.#items);
         if (distinct) return this.items.length;
         return this.#items.reduce((accumulator, item) => accumulator + item.quantity, 0);
     }
