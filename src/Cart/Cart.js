@@ -1,6 +1,7 @@
 "use strict";
 
 const EmptyCartException = require("./EmptyCartException");
+const UpdateCartException = require("./UpdateCartException");
 module.exports = class Cart {
 
     //region private attributes
@@ -29,6 +30,7 @@ module.exports = class Cart {
     }
 
     add(value) {
+        this.#checkUpdateCart(value);
         if (this.#items) this.#items.push(...value);
         else this.#items = value;
     }
@@ -38,6 +40,10 @@ module.exports = class Cart {
     //region private methods
     #checkEmptyCart(value) {
         if (value === null) throw new EmptyCartException();
+    }
+
+    #checkUpdateCart(value) {
+        if (value === null) throw new UpdateCartException();
     }
 
     //endregion private methods
