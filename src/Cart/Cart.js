@@ -22,7 +22,8 @@ module.exports = class Cart {
         return this.#items.reduce((accumulator, item) => accumulator + item.total, 0);
     }
 
-    count() {
+    count(distinct = false) {
+        if (distinct) return this.items.length;
         return this.#items.reduce((accumulator, item) => accumulator + item.quantity, 0);
     }
 
@@ -32,6 +33,7 @@ module.exports = class Cart {
     #CheckEmptyCart(value) {
         if (value === null) throw new EmptyCartException();
     }
+
     //endregion private methods
 }
 
