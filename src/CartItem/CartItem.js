@@ -15,6 +15,9 @@ module.exports = class CartItem {
 
     //region public methods
     constructor(articleId, name, quantity, price) {
+        this.#checkArticleId(articleId);
+        this.#checkPrice(price);
+        this.#checkQuantity(quantity);
         this.#articleId = articleId;
         this.#name = name;
         this.#quantity = quantity;
@@ -42,6 +45,7 @@ module.exports = class CartItem {
     }
 
     set price(value) {
+        this.#checkPrice(value);
         this.#price = value;
     }
 
@@ -51,6 +55,17 @@ module.exports = class CartItem {
     //endregion public methods
 
     //region private methods
+    #checkArticleId(value) {
+        if (value < 1) throw new InvalidArticleIdException();
+    }
+
+    #checkQuantity(value) {
+        if (value < 1) throw new InvalidQuantityException();
+    }
+
+    #checkPrice(value) {
+        if (value < 10) throw new InvalidPriceException();
+    }
     //endregion private methods
 }
 
