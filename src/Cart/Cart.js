@@ -22,6 +22,10 @@ module.exports = class Cart {
         return this.#items.reduce((accumulator, item) => accumulator + item.total, 0);
     }
 
+    count() {
+        return this.#items.reduce((accumulator, item) => accumulator + item.quantity, 0);
+    }
+
     //endregion public methods
 
     //region private methods
